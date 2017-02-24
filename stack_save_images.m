@@ -29,8 +29,12 @@ for slice=1:LastNewStack
         elseif slice>(numel(range_fixed)+numel(range_overlap1))
             imwrite(new_stack(:,:,2,slice),[DirName,'\',FileNamePrefix,sprintf('%04u',slice),'.tif'])
         else
-            composedIM= imfuse(new_stack(:,:,1,slice),new_stack(:,:,2,slice),...
-                'falsecolor','Scaling','independent','ColorChannels',[1 2 0]);
+            %composedIM= imfuse(new_stack(:,:,1,slice),new_stack(:,:,2,slice),...
+            %    'falsecolor','Scaling','independent','ColorChannels',[1 2 0]);
+            [IMsize1,IMsize2,~]=size(new_stack(:,:,1,slice));
+            composedIM=zeros(IMsize1,IMsize2,3,'uint16');
+            composedIM(:,:,1)=new_stack(:,:,1,slice);
+            composedIM(:,:,2)=new_stack(:,:,2,slice);
             imwrite(composedIM,[DirName,'\',FileNamePrefix,sprintf('%04u',slice),'.tif'])
         end
 end
