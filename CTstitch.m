@@ -2,10 +2,10 @@
 clear all
 close all
 %Get LOG files from sub-scans
-%[Files, Nstacks] = importLogfiles;
-Files={'D:\temp\Trial scans\MIS17\2013\28\NRecon stacks\9\Bottom\trial_9_beeswax_expt2.4s_rec.log';
-    'D:\temp\Trial scans\MIS17\2013\28\NRecon stacks\9\Top\trial_9_beeswax_expt2.4s_rec.log'};
-Nstacks = 2;
+[Files, Nstacks] = importLogfiles;
+%Files={'D:\temp\Trial scans\MIS17\2013\28\NRecon stacks\9\Bottom\trial_9_beeswax_expt2.4s_rec.log';
+%    'D:\temp\Trial scans\MIS17\2013\28\NRecon stacks\9\Top\trial_9_beeswax_expt2.4s_rec.log'};
+%Nstacks = 2;
 %Open log files, get file locations and stack properties
 for stack = 1:Nstacks
     stackname = ['stack',num2str(stack)];
